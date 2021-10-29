@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<tariffs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="https://www.example.com/tariffs"
+         xsi:schemaLocation="https://www.example.com/sweets tariffs.xsd">
+    <mobile id="id1" mobile-type="out-net">
+        <name>standard</name>
+        <operator-name>A1</operator-name>
+        <payroll>2</payroll>
+        <connection-price>5</connection-price>
+        <favorite-number>+375296662574</favorite-number>
+        <sms-price>0.5</sms-price>
+        <tariffication-price>0.1</tariffication-price>
+    </mobile>
+    <landline id="id2" tariffication="12 seconds">
+        <name>standard</name>
+        <operator-name>Beltelecom</operator-name>
+        <payroll>5</payroll>
+        <connection-price>10</connection-price>
+        <favorite-number>+375296458719</favorite-number>
+        <address>str.Belgorodska, h.15, ap.63</address>
+        <tariffication-price>0.02</tariffication-price>
+    </landline>
+</tariffs>

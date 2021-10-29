@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="https://www.example.com/tariffs"
+        xmlns:c="https://www.example.com/tariffs"
+        elementFormDefault="qualified">
+    <element name="tariffs">
+        <complexType>
+            <sequence>
+                <element ref="c:Tariffs" minOccurs="1" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <complexType name="TariffType">
+        <sequence>
+            <element name="name" type="string"></element>
+            <element name="operator-name" type="string"></element>
+            <element name="payroll" type="positiveInteger"></element>
+            <element name="connection-price" type="positiveInteger"></element>
+            <element name="favorite-number" type="positiveInteger"></element>
+            <element name="tariffication-price" type="double"></element>
+        </sequence>
+        <attribute name="id" type="c:TariffID" use="required"></attribute>
+        <attribute name="tariffication" use="optional" default="minute">
+            <simpleType>
+                <restriction base="string">
+                    <enumeration value="minute"></enumeration>
+                    <enumeration value="12 seconds"></enumeration>
+                </restriction>
+            </simpleType>
+        </attribute>
+    </complexType>
+    <complexType name="LandlineType">
+        <complexContent>
+            <extension base="c:TariffType">
+                <sequence>
+                    <element name="address" type="string"></element>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="MobileType">
+        <complexContent>
+            <extension base="c:TariffType">
+                <sequence>
+                    <element name="sms-price" type="double"></element>
+                </sequence>
+                <attribute name="mobile-type" use="optional" default="on-net">
+                    <simpleType>
+                        <restriction base="string">
+                            <enumeration value="on-net"></enumeration>
+                            <enumeration value="out-net"></enumeration>
+                        </restriction>
+                    </simpleType>
+                </attribute>
+            </extension>
+        </complexContent>
+    </complexType>
+    <simpleType name="TariffID">
+        <restriction base="ID">
+            <pattern value="id\d{1,6}"></pattern>
+        </restriction>
+    </simpleType>
+    <element name="Tariffs" type="c:TariffType" abstract="true"></element>
+    <element name="landline" type="c:LandlineType" substitutionGroup="c:Tariffs"></element>
+    <element name="mobile" type="c:MobileType" substitutionGroup="c:Tariffs"></element>
+</schema>
