@@ -1,5 +1,6 @@
 package com.company.parsingxml.parser;
 
+import com.company.parsingxml.builder.AbstractTariffsBuilder;
 import com.company.parsingxml.entity.Tariffs;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,7 +13,7 @@ import javax.xml.parsers.SAXParserFactory;
 import java.io.IOException;
 import java.util.Set;
 
-public class SAXParserBuilder {
+public class SAXParserBuilder extends AbstractTariffsBuilder {
     private Set<Tariffs> tariffs;
     private TariffsHandler handler=new TariffsHandler();
     private XMLReader reader;
@@ -31,10 +32,12 @@ public class SAXParserBuilder {
         reader.setContentHandler(handler);
     }
 
+    @Override
     public Set<Tariffs> getTariffs(){
         return tariffs;
     }
 
+    @Override
     public void buildTariffs(String path){
         try {
             reader.parse(path);

@@ -1,5 +1,6 @@
 package com.company.parsingxml.parser;
 
+import com.company.parsingxml.builder.AbstractTariffsBuilder;
 import com.company.parsingxml.entity.Landline;
 import com.company.parsingxml.entity.Mobile;
 import com.company.parsingxml.entity.Tariffs;
@@ -19,7 +20,7 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
-public class DOMParserBuilder {
+public class DOMParserBuilder extends AbstractTariffsBuilder {
     private Set<Tariffs> tariffs;
     private DocumentBuilder documentBuilder;
     private final static Logger logger= LogManager.getLogger();
@@ -34,7 +35,8 @@ public class DOMParserBuilder {
         }
     }
 
-    public void buildSetTariffs(String path){
+    @Override
+    public void buildTariffs(String path){
         Document document;
         try {
             document=documentBuilder.parse(path);
@@ -51,6 +53,7 @@ public class DOMParserBuilder {
 
     }
 
+    @Override
     public Set<Tariffs> getTariffs(){
         return tariffs;
     }

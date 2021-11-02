@@ -1,5 +1,6 @@
 package com.company.parsingxml.parser;
 
+import com.company.parsingxml.builder.AbstractTariffsBuilder;
 import com.company.parsingxml.entity.Landline;
 import com.company.parsingxml.entity.Mobile;
 import com.company.parsingxml.entity.TariffXmlTag;
@@ -19,7 +20,7 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
-public class StAXParserBuilder {
+public class StAXParserBuilder extends AbstractTariffsBuilder {
     private final static Logger logger= LogManager.getLogger();
     private static final String XML_DELIMITER = "-";
     private static final String ENUM_DELIMITER = "_";
@@ -31,10 +32,12 @@ public class StAXParserBuilder {
         tariffs=new HashSet<Tariffs>();
     }
 
+    @Override
     public Set<Tariffs> getTariffs(){
         return tariffs;
     }
 
+    @Override
     public void buildTariffs(String path){
         XMLStreamReader reader;
         String name;
@@ -46,11 +49,11 @@ public class StAXParserBuilder {
                     name=reader.getLocalName();
                     if(name.equals(TariffXmlTag.MOBILE.getValue())){
                         Mobile mobile=new Mobile();
-                        mobile= (Mobile) BuildTariff(name,reader,mobile);
+                        mobile= (Mobile) buildTariff(name,reader,mobile);
                         tariffs.add(mobile);
                     }else if(name.equals(TariffXmlTag.LANDLINE.getValue())){
                         Landline landline=new Landline();
-                        landline= (Landline) BuildTariff(name,reader,landline);
+                        landline= (Landline) buildTariff(name,reader,landline);
                         tariffs.add(landline);
                     }
                 }
@@ -64,7 +67,7 @@ public class StAXParserBuilder {
         }
     }
 
-    private Tariffs BuildTariff(String tag, XMLStreamReader reader,Tariffs tariff) throws XMLStreamException {
+    private Tariffs buildTariff(String tag, XMLStreamReader reader,Tariffs tariff) throws XMLStreamException {
         if(tag.equals(TariffXmlTag.MOBILE.getValue())){
             Mobile mobile=(Mobile)tariff;
             mobile.setMobileType(reader.getAttributeValue(null,TariffXmlTag.MOBILE_TYPE.getValue()));
