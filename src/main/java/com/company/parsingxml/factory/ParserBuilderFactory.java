@@ -7,7 +7,7 @@ import com.company.parsingxml.parser.StAXParserBuilder;
 
 public class ParserBuilderFactory {
         private enum ParserTag{
-            SAX, StAX, DOM
+            SAX, STAX, DOM
         }
         private ParserBuilderFactory(){}
 
@@ -20,7 +20,7 @@ public class ParserBuilderFactory {
                 case SAX -> {
                     return new SAXParserBuilder();
                 }
-                case StAX -> {
+                case STAX -> {
                     return new StAXParserBuilder();
                 }
                 default -> throw new EnumConstantNotPresentException(

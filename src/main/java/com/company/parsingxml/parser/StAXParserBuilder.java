@@ -87,7 +87,7 @@ public class StAXParserBuilder extends AbstractTariffsBuilder {
                             tariff.setOperatorName(getXMLText(reader));
                         }
                         case TARIFFICATION_PRICE ->{
-                            tariff.setTariffication(getXMLText(reader));
+                            tariff.setTarifficationPrice(Double.parseDouble(getXMLText(reader)));
                         }case CONTRACT_DATE -> {
                             tariff.setContractDate(LocalDate.parse(getXMLText(reader)));
                         }case CONTRACTOR_NAME -> {

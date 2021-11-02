@@ -89,7 +89,7 @@ public class TariffsHandler extends DefaultHandler {
                     current.setPassport(buffer);
                 }
                 case TARIFFICATION_PRICE ->{
-                    current.setTariffication(buffer);
+                    current.setTarifficationPrice(Double.parseDouble(buffer));
                 }
                 case PAYROLL ->{
                     current.setPayroll(Integer.parseInt(buffer));
