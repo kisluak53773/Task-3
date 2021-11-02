@@ -1,4 +1,4 @@
-package com.company.entity;
+package com.company.parsingxml.entity;
 
 public enum TariffXmlTag {
     TARIFFS("tariffs"),
@@ -9,6 +9,9 @@ public enum TariffXmlTag {
     MOBILE_TYPE("mobile-type"),
     NAME("name"),
     OPERATOR_NAME("operator-name"),
+    CONTRACT_DATE("contract-date"),
+    CONTRACTOR_NAME("contractor-name"),
+    PASSPORT("passport"),
     PAYROLL("payroll"),
     CONNECTION_PRICE("connection-price"),
     FAVORITE_NUMBER("favorite-number"),

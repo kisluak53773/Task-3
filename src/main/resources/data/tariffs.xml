@@ -6,6 +6,9 @@
     <mobile id="id1" mobile-type="out-net">
         <name>standard</name>
         <operator-name>A1</operator-name>
+        <contract-date>2015-04-28</contract-date>
+        <contractor-name>Alex Merser</contractor-name>
+        <passport>AB614521</passport>
         <payroll>2</payroll>
         <connection-price>5</connection-price>
         <favorite-number>+375296662574</favorite-number>
@@ -15,6 +18,9 @@
     <landline id="id2" tariffication="12 seconds">
         <name>standard</name>
         <operator-name>Beltelecom</operator-name>
+        <contract-date>2016-12-19</contract-date>
+        <contractor-name>Jason Smith</contractor-name>
+        <passport>AB672984</passport>
         <payroll>5</payroll>
         <connection-price>10</connection-price>
         <favorite-number>+375296458719</favorite-number>

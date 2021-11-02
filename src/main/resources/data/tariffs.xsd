@@ -15,6 +15,9 @@
         <sequence>
             <element name="name" type="string"></element>
             <element name="operator-name" type="string"></element>
+            <element name="contract-date" type="date"></element>
+            <element name="contractor-name" type="string"></element>
+            <element name="passport" type="string"></element>
             <element name="payroll" type="positiveInteger"></element>
             <element name="connection-price" type="positiveInteger"></element>
             <element name="favorite-number" type="positiveInteger"></element>

@@ -1,28 +1,39 @@
-package com.company.entity;
+package com.company.parsingxml.entity;
+
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 
 public class Tariffs {
     private String id;
     private String name;
     private String operatorName;
+    private LocalDate contractDate;
+    private String contractorName;
+    private String passport;
     private int payroll;
     private int connectionPrice;
     private String favoriteNumber;
     private String tariffication;
     private double tarifficationPrice;
 
-    public Tariffs(String id, String name, String operatorName, int payroll, int connectionPrice,
-                   String favoriteNumber, String tariffication, double tarifficationPrice) {
+
+
+    public Tariffs(){}
+
+    public Tariffs(String id, String name, String operatorName, LocalDate contractDate, String contractorName,
+                   String passport, int payroll, int connectionPrice, String favoriteNumber, String tariffication, double tarifficationPrice) {
         this.id = id;
         this.name = name;
         this.operatorName = operatorName;
+        this.contractDate = contractDate;
+        this.contractorName = contractorName;
+        this.passport = passport;
         this.payroll = payroll;
         this.connectionPrice = connectionPrice;
         this.favoriteNumber = favoriteNumber;
         this.tariffication = tariffication;
         this.tarifficationPrice = tarifficationPrice;
     }
-
-    public Tariffs(){}
 
     public String getId() {
         return id;
@@ -54,6 +65,18 @@ public class Tariffs {
 
     public double getTarifficationPrice() {
         return tarifficationPrice;
+    }
+
+    public LocalDate getContractDate() {
+        return contractDate;
+    }
+
+    public String getContractorName() {
+        return contractorName;
+    }
+
+    public String getPassport() {
+        return passport;
     }
 
     public void setId(String id) {
@@ -88,12 +111,27 @@ public class Tariffs {
         this.tarifficationPrice = tarifficationPrice;
     }
 
+    public void setContractDate(LocalDate contractDate) {
+        this.contractDate = contractDate;
+    }
+
+    public void setContractorName(String contractorName) {
+        this.contractorName = contractorName;
+    }
+
+    public void setPassport(String passport) {
+        this.passport = passport;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb=new StringBuilder();
         sb.append("id:").append(id).append("\n");
         sb.append("name:").append(name).append("\n");
         sb.append("operator name:").append(operatorName).append("\n");
+        sb.append("contract date:").append(contractDate).append("\n");
+        sb.append("contractor name:").append(contractorName).append("\n");
+        sb.append("passport:").append(passport).append("\n");
         sb.append("payroll:").append(payroll).append("\n");
         sb.append("connection price:").append(connectionPrice).append("\n");
         sb.append("favorite number:").append(favoriteNumber).append("\n");

@@ -1,6 +1,6 @@
-package com.company.parser;
+package com.company.parsingxml.parser;
 
-import com.company.entity.Tariffs;
+import com.company.parsingxml.entity.Tariffs;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.xml.sax.SAXException;
@@ -24,9 +24,9 @@ public class SAXParserBuilder {
             SAXParser parser=factory.newSAXParser();
             reader=parser.getXMLReader();
         } catch (ParserConfigurationException e) {
-            logger.error("sax parser exception");
+            logger.error("Parse configuration exception");
         } catch (SAXException e) {
-            logger.error("sax parser exception");
+            logger.error("SAX exception");
         }
         reader.setContentHandler(handler);
     }
@@ -35,13 +35,13 @@ public class SAXParserBuilder {
         return tariffs;
     }
 
-    public void buildTariffs(String filename){
+    public void buildTariffs(String path){
         try {
-            reader.parse(filename);
+            reader.parse(path);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("IO exception");
         } catch (SAXException e) {
-            e.printStackTrace();
+            logger.error("SAX exception");
         }
         tariffs=handler.getTariffs();
     }

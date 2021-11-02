@@ -1,12 +1,13 @@
-package com.company.parser;
+package com.company.parsingxml.parser;
 
-import com.company.entity.Landline;
-import com.company.entity.Mobile;
-import com.company.entity.TariffXmlTag;
-import com.company.entity.Tariffs;
+import com.company.parsingxml.entity.Landline;
+import com.company.parsingxml.entity.Mobile;
+import com.company.parsingxml.entity.TariffXmlTag;
+import com.company.parsingxml.entity.Tariffs;
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
 
+import java.time.LocalDate;
 import java.util.EnumSet;
 import java.util.HashSet;
 import java.util.Set;
@@ -18,6 +19,7 @@ public class TariffsHandler extends DefaultHandler {
     private Tariffs current;
     private TariffXmlTag currentXmlTag;
     private EnumSet<TariffXmlTag> withText;
+
     public  TariffsHandler(){
         tariffs = new HashSet<Tariffs>();
         withText = EnumSet.range(TariffXmlTag.NAME,TariffXmlTag.TARIFFICATION_PRICE);
@@ -46,8 +48,8 @@ public class TariffsHandler extends DefaultHandler {
                         current.setTariffication(attrs.getValue(i));
                     }
                     case MOBILE_TYPE -> {
-                        Mobile cookie = (Mobile) current;
-                        cookie.setMobileType(attrs.getValue(i));
+                        Mobile mobile = (Mobile) current;
+                        mobile.setMobileType(attrs.getValue(i));
                     }
                 }
             }
@@ -79,8 +81,14 @@ public class TariffsHandler extends DefaultHandler {
                 }
                 case OPERATOR_NAME ->{
                     current.setOperatorName(buffer);
+                }case CONTRACT_DATE->{
+                    current.setContractDate(LocalDate.parse(buffer));
+                }case CONTRACTOR_NAME -> {
+                    current.setContractorName(buffer);
+                }case PASSPORT -> {
+                    current.setPassport(buffer);
                 }
-                case TARIFFICATION ->{
+                case TARIFFICATION_PRICE ->{
                     current.setTariffication(buffer);
                 }
                 case PAYROLL ->{
